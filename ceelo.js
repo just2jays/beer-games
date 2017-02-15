@@ -1,4 +1,6 @@
-var rollArray = [];
+function runThrow() {
+  $('.roll-board').children().remove();
+  var rollArray = [];
 
 for(i=1; i<=3; i++){
     rollArray.push(roll(1,6));
@@ -36,7 +38,14 @@ if(uniqueRoll.length == 2){
     });
 }
 
-var dice_text = ["+originalRoll[0]+"] ["+originalRoll[1]+"] ["+originalRoll[2]+"];
+// console.log("["+originalRoll[0]+"] ["+originalRoll[1]+"] ["+originalRoll[2]+"] | "+ finalScore);
+
+$('.roll-board').append(getDiceHtml(originalRoll[0]));
+
+$('.roll-board').append(getDiceHtml(originalRoll[1]));
+
+$('.roll-board').append(getDiceHtml(originalRoll[2]));
+}
 
 function getOccurrence(array, value) {
     return array.filter((v) => (v === value)).length;
@@ -45,3 +54,35 @@ function getOccurrence(array, value) {
 function roll (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+function getDiceHtml(num) {
+  switch (num) {
+    case 1:
+      return '<div class="first-face"><span class="pip"></span></div>';
+      break;
+    
+    case 2:
+      return '<div class="second-face">  <span class="pip"></span>  <span class="pip"></span></div>'
+      break;
+      
+    case 3:
+      return '<div class="third-face">  <span class="pip"></span>  <span class="pip"></span>  <span class="pip"></span></div>';
+      break;
+      
+    case 4:
+      return '<div class="fourth-face">  <div class="column">    <span class="pip"></span>    <span class="pip"></span>  </div>  <div class="column">    <span class="pip"></span>    <span class="pip"></span>  </div></div>'
+      break;
+      
+    case 5:
+      return '<div class="fifth-face">  <div class="column">    <span class="pip"></span>    <span class="pip"></span>  </div>  <div class="column">    <span class="pip"></span>  </div>  <div class="column">    <span class="pip"></span>    <span class="pip"></span>  </div></div>'
+      break;
+      
+    case 6:
+      return '<div class="sixth-face">  <div class="column">    <span class="pip"></span>    <span class="pip"></span>    <span class="pip"></span>  </div>  <div class="column">    <span class="pip"></span>    <span class="pip"></span>    <span class="pip"></span>  </div></div>'
+      break;
+  }
+}
+
+$('.roll-button').on('click', function() {
+  runThrow();
+});
