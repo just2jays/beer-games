@@ -6,7 +6,8 @@ var port = process.env.PORT || 3000;
 app.set('port', port);
 
 // test route
-app.get('/', express.static(path.join(__dirname, 'racing')) );
+app.get('/racing', express.static(path.join(__dirname, 'racing')) );
+app.get('/ceelo', express.static(path.join(__dirname, 'ceelo')) );
 
 // error handler
 app.use(function (err, req, res, next) {
