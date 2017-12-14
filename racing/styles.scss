@@ -23,7 +23,11 @@ $trackWidth: 100%;
   background-color: orange;
   padding: 0px;
   float: left;
-  margin: 5px 0px
+  margin: 5px 0px;
+
+  .horse-rank {
+    margin: 0 auto;
+  }
 }
 
 .horse {
