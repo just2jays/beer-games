@@ -5,15 +5,14 @@ var port = process.env.PORT || 3000;
 
 app.set('port', port);
 
-// test route
-app.get('/racing', express.static(path.join(__dirname, 'racing')) );
-app.get('/ceelo', express.static(path.join(__dirname, 'ceelo')) );
-
-// error handler
-app.use(function (err, req, res, next) {
-    console.error(err.stack);
-    res.status(400).send(err.message);
-  });
+// routes to serve the static HTML files
+app.get('/racing', function(req, res) {
+    res.sendfile('racing/index.html');
+});
+// Note: route names need not match the file name
+app.get('/ceelo', function(req, res) {
+    res.sendfile('ceelo/index.html');
+});
 
 // Listen for requests
 var server = app.listen(app.get('port'), function() {
