@@ -7,3 +7,7 @@ app.set('port', port);
 app.listen(port, function(){
     console.log("Server started ..!");
 });
+
+app.get('/', function (req, res) {
+    res.send('root')
+})
