@@ -5,7 +5,14 @@ var port = process.env.PORT || 3000;
 
 app.set('port', port);
 
-app.use(express.static(path.join(__dirname, 'racing')));
+// test route
+app.get('/', express.static(path.join(__dirname, 'racing')) );
+
+// error handler
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(400).send(err.message);
+  });
 
 // Listen for requests
 var server = app.listen(app.get('port'), function() {
