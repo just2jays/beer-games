@@ -5,7 +5,7 @@ $(document).ready(function(){
   $('#beginRace').on('click', function(){
       setInterval(function(){
       beginRace();
-    }, 500);
+    }, 200);
   });
 
   $('#newHorse').on('submit', function(event){
